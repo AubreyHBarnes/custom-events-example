@@ -8,13 +8,15 @@ const fetchData = async () => {
     }
     const getMeals = await res.json();
 
+    console.log(`Inside fetchData, getMeals length is ${getMeals.meals.length}`)
+
     processOrder(getMeals)
     
 }
 
 const processOrder = (getMeals) => {
     const mealsData = getMeals.meals
-    const customerOrder = mealsData.slice(0, Math.floor(Math.random() * mealsData.length))
+    const customerOrder = mealsData.slice(0, Math.floor(Math.random() * mealsData.length) + 1)
 
     const orderDetails = customerOrder.map(item => (
         {
