@@ -1,0 +1,73 @@
+body {
+    background: #e3ceb8;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+p.order-number {
+    width: 100%;
+    margin: 0 auto;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6b8b96;
+    border-radius: 8px;
+    color: #e8f9ff;
+    font-size: 1.4rem;
+}
+
+.order-container {
+    width: 90vw;
+    display: grid;
+    gap: 5px;
+    padding: 0 5vw;
+    margin: 1rem 0;
+}
+
+.item-in-order {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: end;
+    margin: 0 auto;
+    text-align: right;
+    border-radius: 12px;
+    max-height: 150px;
+    background: #e8f9ff;
+    color: #181a18;
+    font-size: 1.25rem;
+}
+
+.item-in-order img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    #root {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 1.5rem;
+        gap: 1rem;
+
+    }
+
+    .order-container {
+        width: revert;
+        grid-auto-rows: 150px;
+        padding: 0;
+    }
+
+    p.order-number {
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #root {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

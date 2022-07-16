@@ -1,8 +1,12 @@
 
 const fetchData = async () => {
     const url = `https://www.themealdb.com/api/json/v2/9973533/randomselection.php`
-    const data = await fetch(url)
-    const getMeals = await data.json();
+    const res = await fetch(url)
+
+    if (!res.ok) {
+        throw new Error(`http response: ${res.status}`)
+    }
+    const getMeals = await res.json();
 
     processOrder(getMeals)
     
@@ -11,7 +15,6 @@ const fetchData = async () => {
 const processOrder = (getMeals) => {
     const mealsData = getMeals.meals
     const customerOrder = mealsData.slice(0, Math.floor(Math.random() * mealsData.length))
-    // console.log(customerOrder)
 
     const orderDetails = customerOrder.map(item => (
         {
@@ -27,15 +30,19 @@ const processOrder = (getMeals) => {
 
     window.dispatchEvent(orderEvent)
 }
-fetchData();
-// setInterval(fetchData, 3000);
+// fetchData();
+// fetchData();
+const stopMe = setInterval(fetchData, 3000);
 
 window.addEventListener('order', (evt) => {
     let root = document.getElementById('root');
     const section = document.createElement('section');
     section.className = 'order-container'
-    
-    
+    let orderNumber = document.createElement('p')
+    orderNumber.className = 'order-number'
+    orderNumber.innerText = `Order ${Math.floor(Math.random() * 1000)}`
+    section.append(orderNumber)
+
     const displayOrder = evt.detail.map(item => {
         const p = document.createElement('p')
         const img = document.createElement('img')
