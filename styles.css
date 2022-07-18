@@ -69,5 +69,7 @@ p.order-number {
 @media screen and (min-width: 1200px) {
     #root {
         grid-template-columns: 1fr 1fr 1fr;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 }

@@ -1,14 +1,12 @@
 
 const fetchData = async () => {
-    const url = `https://www.themealdb.com/api/json/v2/9973533/randomselection.php`
+    const url = `https://www.themealdb.com/api/json/v2/${API_SECRET}/randomselection.php`
     const res = await fetch(url)
 
     if (!res.ok) {
         throw new Error(`http response: ${res.status}`)
     }
     const getMeals = await res.json();
-
-    console.log(`Inside fetchData, getMeals length is ${getMeals.meals.length}`)
 
     processOrder(getMeals)
     
@@ -32,8 +30,7 @@ const processOrder = (getMeals) => {
 
     window.dispatchEvent(orderEvent)
 }
-// fetchData();
-// fetchData();
+
 const stopMe = setInterval(fetchData, 3000);
 
 window.addEventListener('order', (evt) => {
