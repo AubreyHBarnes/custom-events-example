@@ -1,0 +1,25 @@
+{
+  "name": "custom-events-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AubreyHBarnes/custom-events-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AubreyHBarnes/custom-events-example/issues"
+  },
+  "homepage": "https://github.com/AubreyHBarnes/custom-events-example#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "netlify-cli": "^10.10.0",
+    "qs": "^6.11.0"
+  }
+}

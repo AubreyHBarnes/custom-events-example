@@ -1,7 +1,7 @@
 
 const fetchData = async () => {
-    const url = `https://www.themealdb.com/api/json/v2/${API_SECRET}/randomselection.php`
-    const res = await fetch(url)
+    // const url = `https://www.themealdb.com/api/json/v2/${API_SECRET}/randomselection.php`
+    const res = await fetch(`/.netlify/functions/secret-api`)
 
     if (!res.ok) {
         throw new Error(`http response: ${res.status}`)
