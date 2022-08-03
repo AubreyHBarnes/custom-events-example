@@ -1,6 +1,5 @@
-
+// fetch data from api using netlify functions
 const fetchData = async () => {
-    // const url = `https://www.themealdb.com/api/json/v2/${API_SECRET}/randomselection.php`
     const res = await fetch(`/.netlify/functions/secret-api`)
 
     if (!res.ok) {
@@ -11,11 +10,15 @@ const fetchData = async () => {
     processOrder(getMeals)
     
 }
-
+// This function is called to get a random selection of meals from the array passed in from fetch
+// 
 const processOrder = (getMeals) => {
+    //save an array of randomly selected meals
     const mealsData = getMeals.meals
+    // select a random number of meals starting from the beginning of the mealsData array
+    // at least one, up to the length of the array given.
     const customerOrder = mealsData.slice(0, Math.floor(Math.random() * mealsData.length) + 1)
-
+// map an array of objects
     const orderDetails = customerOrder.map(item => (
         {
             mealName: item.strMeal,
@@ -23,21 +26,24 @@ const processOrder = (getMeals) => {
         }
     ))
 
+// create and initialize event. 
+
     var orderEvent = new CustomEvent(
         'order',
         { detail: orderDetails }
     );
-
+    // tell the browser api to fire the event
     window.dispatchEvent(orderEvent)
 }
 
-const stopMe = setInterval(fetchData, 3000);
+const stopMe = setInterval(fetchData, 2000);
 
 window.addEventListener('order', (evt) => {
     let root = document.getElementById('root');
     const section = document.createElement('section');
-    section.className = 'order-container'
     let orderNumber = document.createElement('p')
+
+    section.className = 'order-container'
     orderNumber.className = 'order-number'
     orderNumber.innerText = `Order ${Math.floor(Math.random() * 1000)}`
     section.append(orderNumber)
