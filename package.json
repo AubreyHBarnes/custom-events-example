@@ -19,7 +19,7 @@
   "homepage": "https://github.com/AubreyHBarnes/custom-events-example#readme",
   "dependencies": {
     "axios": "^0.24.0",
-    "netlify-cli": "^10.10.0",
+    "netlify-cli": "^10.14.0",
     "qs": "^6.11.0"
   }
 }

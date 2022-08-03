@@ -1,17 +1,18 @@
 // fetch data from api using netlify functions
 const fetchData = async () => {
+    //get the data from my super secret netlify function
     const res = await fetch(`/.netlify/functions/secret-api`)
-
+    //if something goes wrong, throw an error
     if (!res.ok) {
         throw new Error(`http response: ${res.status}`)
     }
+    // if something goes right, save the json response
     const getMeals = await res.json();
-
+    // pass the fetched data to a new function to process
     processOrder(getMeals)
     
 }
 // This function is called to get a random selection of meals from the array passed in from fetch
-// 
 const processOrder = (getMeals) => {
     //save an array of randomly selected meals
     const mealsData = getMeals.meals
