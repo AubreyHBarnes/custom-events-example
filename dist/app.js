@@ -1,7 +1,7 @@
 // fetch data from api using netlify functions
 const fetchData = async () => {
     //get the data from my super secret netlify function
-    const res = await fetch(`/.netlify/functions/secret-api`)
+    const res = await fetch(`/.netlify/functions/token-hider`)
     //if something goes wrong, throw an error
     if (!res.ok) {
         throw new Error(`http response: ${res.status}`)
