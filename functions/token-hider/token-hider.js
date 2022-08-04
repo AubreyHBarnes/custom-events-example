@@ -11,7 +11,7 @@ const handler = async function (event) {
 
   // TODO: customize your URL and API keys set in the Netlify Dashboard
   // this is secret too, your frontend won't see this
-
+  const API_SECRET = process.env.API_SECRET
   const URL = `https://www.themealdb.com/api/json/v2/${API_SECRET}/randomselection.php`
 
   console.log('Constructed URL is ...', URL)
